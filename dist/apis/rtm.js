@@ -18,13 +18,4 @@ function start() {
     });
 }
 exports.start = start;
-function addEventHandlers(type, handler) {
-    return __awaiter(this, void 0, void 0, function* () {
-        rtm.on(type, handler);
-        rtm.on("message.im", e => {
-            console.log(e);
-        });
-    });
-}
-exports.addEventHandlers = addEventHandlers;
 //# sourceMappingURL=rtm.js.map

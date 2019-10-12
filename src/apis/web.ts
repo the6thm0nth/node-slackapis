@@ -24,13 +24,15 @@ export async function getChannel(query: Query) {
   });
 }
 
-export async function getUserById(id: string) {
-  const members = await getUsers();
-  return members.find(member => member.id === id);
-}
-
-async function getUsers() {
-  return ((await web.users.list()) as MembersResult).members;
+export async function getUser(query: Query) {
+  const res = (await web.users.list()) as MembersResult;
+  return res.members.find(m => {
+    if (isIdQuery(query)) {
+      return m.id === query.id;
+    } else {
+      return m.name === query.name;
+    }
+  });
 }
 
 export async function sendMessage(channel: string, text: string) {

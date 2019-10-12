@@ -27,18 +27,20 @@ function getChannel(query) {
     });
 }
 exports.getChannel = getChannel;
-function getUserById(id) {
+function getUser(query) {
     return __awaiter(this, void 0, void 0, function* () {
-        const members = yield getUsers();
-        return members.find(member => member.id === id);
+        const res = (yield web.users.list());
+        return res.members.find(m => {
+            if (types_1.isIdQuery(query)) {
+                return m.id === query.id;
+            }
+            else {
+                return m.name === query.name;
+            }
+        });
     });
 }
-exports.getUserById = getUserById;
-function getUsers() {
-    return __awaiter(this, void 0, void 0, function* () {
-        return (yield web.users.list()).members;
-    });
-}
+exports.getUser = getUser;
 function sendMessage(channel, text) {
     return __awaiter(this, void 0, void 0, function* () {
         return web.chat.postMessage({

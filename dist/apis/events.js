@@ -17,9 +17,18 @@ function start(port, handler) {
     });
 }
 exports.start = start;
-function addEvent(type, handler) {
+function addEvent(eventType, handler) {
     return __awaiter(this, void 0, void 0, function* () {
-        slackEvents.on(type, handler);
+        switch (eventType) {
+            case "app_mention":
+                slackEvents.on(eventType, handler);
+                break;
+            case "error":
+                slackEvents.on(eventType, handler);
+                break;
+            default:
+                console.log(eventType);
+        }
     });
 }
 exports.addEvent = addEvent;
