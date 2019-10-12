@@ -1,0 +1,27 @@
+{
+  "name": "node-slackapis",
+  "version": "0.0.1",
+  "description": "wrapper of slack node client",
+  "main": "dist/index.js",
+  "author": "hoony <the6thm0nth@outlook.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@slack/events-api": "^2.3.0",
+    "@slack/rtm-api": "^5.0.3",
+    "@slack/web-api": "^5.2.1"
+  },
+  "scripts": {
+    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' index.ts",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/assert": "^1.4.3",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.7.12",
+    "assert": "^2.0.0",
+    "mocha": "^6.2.1",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.4"
+  }
+}
